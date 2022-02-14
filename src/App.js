@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Phonebook extends React.Component {
+  // state = {
+  //   contacts: [],
+  //   name: "",
+  // };
+
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
+    const name = form.elements.name.value;
+
+    console.log(name);
+    // this.props.onSubmit({ name });
+    form.reset();
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <h1>Name</h1>
+        <input
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+        <button type="submit">Add contact</button>
+      </form>
+    );
+  }
 }
 
-export default App;
+export default Phonebook;
