@@ -1,0 +1,4 @@
+.phonebookList {
+  display: flex;
+  flex-direction: column;
+}
