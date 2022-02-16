@@ -1,5 +1,4 @@
-import React from "react";
-import { Component } from "react/cjs/react.production.min";
+import { Component } from "react";
 
 class AddContacts extends Component {
   state = {

@@ -2,6 +2,7 @@ import React from "react";
 import Phonebook from "./Components/Phonebook";
 import AddContacts from "./Components/AddContacts";
 import shortid from "shortid";
+// import Filter from "./Components/Filter";
 
 class App extends React.Component {
   state = {
@@ -38,13 +39,22 @@ class App extends React.Component {
       ),
     }));
   };
+
+  // changeFilter = (e) => {
+  //   this.setState({ filter: e.currentTarget.value });
+  // };
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
     return (
       <div>
         <h1>Phonebook</h1>
         <AddContacts onSubmit={this.addContact} />
         <h2>Contacts</h2>
+        {/* <Filter value={filter} onChange={this.changeFilter} /> */}
+        {/* <label>
+          FILTER BY NAME{" "}
+          <input type="text" value={filter} onChange={this.changeFilter} />
+        </label> */}
         <Phonebook contacts={contacts} onDeleteContact={this.deleteContact} />
       </div>
     );
