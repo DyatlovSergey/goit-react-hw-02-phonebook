@@ -40,9 +40,9 @@ class App extends React.Component {
     }));
   };
 
-  // changeFilter = (e) => {
-  //   this.setState({ filter: e.currentTarget.value });
-  // };
+  changeFilter = (e) => {
+    this.setState({ filter: e.currentTarget.value });
+  };
   render() {
     const { contacts, filter } = this.state;
     return (
@@ -51,10 +51,10 @@ class App extends React.Component {
         <AddContacts onSubmit={this.addContact} />
         <h2>Contacts</h2>
         {/* <Filter value={filter} onChange={this.changeFilter} /> */}
-        {/* <label>
+        <label>
           FILTER BY NAME{" "}
           <input type="text" value={filter} onChange={this.changeFilter} />
-        </label> */}
+        </label>
         <Phonebook contacts={contacts} onDeleteContact={this.deleteContact} />
       </div>
     );
