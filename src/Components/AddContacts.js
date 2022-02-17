@@ -1,4 +1,5 @@
 import { Component } from "react";
+import s from "./Phonebook.module.css";
 
 class AddContacts extends Component {
   state = {
@@ -20,7 +21,7 @@ class AddContacts extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={ s.form}>
         <input
           type="text"
           name="name"
