@@ -24,6 +24,7 @@ class AddContacts extends Component {
       <form className={s.phonebookList} onSubmit={this.handleSubmit}>
         <label>Name</label>
         <input
+          className={s.input}
           type="text"
           name="name"
           value={this.state.name}
@@ -35,6 +36,7 @@ class AddContacts extends Component {
 
         <label>Number</label>
         <input
+          className={s.input}
           type="tel"
           name="number"
           value={this.state.number}
@@ -44,7 +46,9 @@ class AddContacts extends Component {
           required
         />
 
-        <button type="submit">Add contact</button>
+        <button className={s.button} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }

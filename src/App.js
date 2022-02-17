@@ -1,9 +1,11 @@
 import React from "react";
+import shortid from "shortid";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+
 import Phonebook from "./Components/Phonebook";
 import AddContacts from "./Components/AddContacts";
-import shortid from "shortid";
 import Filter from "./Components/Filter";
-import { Notify } from "notiflix/build/notiflix-notify-aio";
+import s from "./Components/Phonebook.module.css";
 
 class App extends React.Component {
   state = {
@@ -65,7 +67,7 @@ class App extends React.Component {
     const { contacts, filter } = this.state;
     const visibleContactCards = this.visibleContactCards();
     return (
-      <section>
+      <section className={s.container}>
         <h1>Phonebook</h1>
         <AddContacts onSubmit={this.addContact} />
         <h2>Contacts</h2>
