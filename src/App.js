@@ -2,7 +2,8 @@ import React from "react";
 import Phonebook from "./Components/Phonebook";
 import AddContacts from "./Components/AddContacts";
 import shortid from "shortid";
-// import Filter from "./Components/Filter";
+import Filter from "./Components/Filter";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 class App extends React.Component {
   state = {
@@ -13,12 +14,19 @@ class App extends React.Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
-    name: "",
-    number: "",
   };
 
   addContact = (name, number) => {
     console.log(name, number);
+
+    const { contacts } = this.state;
+    const repeatName = contacts.find((contact) => {
+      return contact.name.toLowerCase() === name.toLowerCase();
+    });
+    if (repeatName) {
+      Notify.warning(`${name} is already in contacts`);
+      return;
+    }
 
     const contact = {
       id: shortid.generate(),
@@ -28,6 +36,7 @@ class App extends React.Component {
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
     }));
+    Notify.success(`${name} is added in contacts`);
   };
 
   nameInputId = shortid.generate();
@@ -41,22 +50,31 @@ class App extends React.Component {
   };
 
   changeFilter = (e) => {
-    this.setState({ filter: e.currentTarget.value });
+    this.setState({ filter: e.target.value });
+  };
+
+  visibleContactCards = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
   };
   render() {
     const { contacts, filter } = this.state;
+    const visibleContactCards = this.visibleContactCards();
     return (
-      <div>
+      <section>
         <h1>Phonebook</h1>
         <AddContacts onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        {/* <Filter value={filter} onChange={this.changeFilter} /> */}
-        <label>
-          FILTER BY NAME{" "}
-          <input type="text" value={filter} onChange={this.changeFilter} />
-        </label>
-        <Phonebook contacts={contacts} onDeleteContact={this.deleteContact} />
-      </div>
+        <Filter onChangeFilter={this.changeFilter} value={filter} />
+        <Phonebook
+          contacts={visibleContactCards}
+          onDeleteContact={this.deleteContact}
+        />
+      </section>
     );
   }
 }

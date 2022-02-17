@@ -1,4 +1,6 @@
 .phonebookList {
   display: flex;
   flex-direction: column;
+  width: 300px;
+  justify-content: space-between;
 }

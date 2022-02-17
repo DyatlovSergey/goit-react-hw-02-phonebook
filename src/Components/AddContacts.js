@@ -1,4 +1,5 @@
 import { Component } from "react";
+import s from "./Phonebook.module.css";
 
 class AddContacts extends Component {
   state = {
@@ -20,7 +21,8 @@ class AddContacts extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={s.phonebookList} onSubmit={this.handleSubmit}>
+        <label>Name</label>
         <input
           type="text"
           name="name"
@@ -30,6 +32,8 @@ class AddContacts extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
+
+        <label>Number</label>
         <input
           type="tel"
           name="number"
