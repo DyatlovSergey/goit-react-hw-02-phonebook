@@ -45,8 +45,10 @@ class App extends React.Component {
   };
   render() {
     const { contacts, filter } = this.state;
+     const totalContacts = contacts.length;
     return (
       <div>
+         <p>Всего contact: {totalContacts}</p>
         <h1>Phonebook</h1>
         <AddContacts onSubmit={this.addContact} />
         <h2>Contacts</h2>
