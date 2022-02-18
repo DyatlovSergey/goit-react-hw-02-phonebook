@@ -1,3 +1,8 @@
+body {
+  font-family: 'Eczar', serif;
+}
+
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -54,12 +59,13 @@
 
 .filter__label {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .filter__input {
   display: block;
   width: 200px;
+  margin-bottom: 40px;
 }
 
 /* CONTACT LIST STYLES */
@@ -69,6 +75,14 @@
   justify-content: space-between;
 }
 
+.contact__description {
+  margin: 10px;
+}
+
+
+.contact__name {
+  margin-right: 10px;
+}
 .contact__delete {
   display: inline-block;
   border-radius: 4px;
@@ -77,7 +91,7 @@
   color: #ffffff;
   text-align: center;
   font-size: 18px;
-  padding: 5px;
+  padding: 0px;
   width: 100px;
   transition: all 0.5s;
   cursor: pointer;

@@ -6,7 +6,7 @@ const Phonebook = ({ contacts, onDeleteContact }) => (
     {contacts.map(({ id, name, number }) => (
       <li className={s.contact__item} key={id}>
         <p className={s.contact__description}>
-          <span>{name}</span>
+          <span className={s.contact__name}>{name}:</span>
           <span>{number}</span>
         </p>
         <button
